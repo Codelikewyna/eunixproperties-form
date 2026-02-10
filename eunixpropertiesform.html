@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eunix Properties</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #dc2626;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .form-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 2px solid #f1f5f9;
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .form-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .form-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.15);
+            border-color: #fecaca;
+        }
+
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .icon-wrapper svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .form-description {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .form-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #dc2626;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .form-card:hover .form-link {
+            gap: 12px;
+        }
+
+        .form-link svg {
+            width: 16px;
+            height: 16px;
+            fill: #dc2626;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-text {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-card {
+                padding: 32px 24px;
+            }
+
+            .form-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            .icon-wrapper svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <h1>Eunix Properties Forms</h1>
+            <p class="subtitle">Choose your path to get started</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="forms-grid">
+            <!-- Investors Form -->
+            <div class="form-card" onclick="window.open('https://forms.gle/fe2HG5843N6RzyUt6', '_blank')">
+                <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.86-.96-6-4.86-6-8.5V8.41l6-3.14 6 3.14V11.5c0 3.64-2.14 7.54-6 8.5z"/>
+                        <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                </div>
+                <h2 class="form-title">Investors</h2>
+                <p class="form-description">Explore investment opportunities and join our network of partners</p>
+                <a href="https://forms.gle/fe2HG5843N6RzyUt6" target="_blank" class="form-link">
+                    Access Form
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Student Form -->
+            <div class="form-card" onclick="window.open('https://forms.gle/vY7bP2tY5QMEVvqe9', '_blank')">
+                <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                    </svg>
+                </div>
+                <h2 class="form-title">Students</h2>
+                <p class="form-description">Find your ideal student accommodation with us</p>
+                <a href="https://forms.gle/vY7bP2tY5QMEVvqe9" target="_blank" class="form-link">
+                    Access Form
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Realtor Form -->
+            <div class="form-card" onclick="window.open('https://forms.gle/iQM8uTa9qKeDk27F7', '_blank')">
+                <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </div>
+                <h2 class="form-title">Realtors</h2>
+                <p class="form-description">Partner with us and grow your real estate business</p>
+                <a href="https://forms.gle/iQM8uTa9qKeDk27F7" target="_blank" class="form-link">
+                    Access Form
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">© 2025 Eunix Properties. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
