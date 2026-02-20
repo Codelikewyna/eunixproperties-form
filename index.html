@@ -1,300 +1,1239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eunix Properties</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eunix Properties Ltd - A fast-growing real estate development and management company committed to providing high-quality, affordable, and sustainable housing solutions across Rivers state and Nigeria at large.">
+    <meta name="author" content="Eunix Properties Ltd">
+    <link rel="icon" type="image/png" href="images/eunix-logo.png" />
+    <title>Eunix Properties Ltd — The best Real Estate Solutions in Port harcourt, Rivers state</title>
+
+    <!-- FONTS: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/eunix-properties.css" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ===== POPPINS GLOBAL OVERRIDE ===== */
+        *, *::before, *::after {
+            font-family: 'Poppins', sans-serif !important;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        /* ===== HERO SLIDESHOW ===== */
+        .hero-section {
+            position: relative;
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            max-width: 900px;
-            width: 100%;
-            padding: 60px 40px;
-            text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo-section {
-            margin-bottom: 50px;
-        }
-
-        h1 {
-            color: #dc2626;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
-            margin: 0 auto 40px;
-            border-radius: 2px;
-        }
-
-        .forms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .form-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-            border: 2px solid #f1f5f9;
-            border-radius: 16px;
-            padding: 40px 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
             overflow: hidden;
+            background: #111;
         }
 
-        .form-card::before {
+        .hero-slideshow {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+        }
+
+        .hero-slide.active { opacity: 1; }
+
+        .hero-slide::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(80,0,0,0.5) 50%, rgba(0,0,0,0.68) 100%);
         }
 
-        .form-card:hover::before {
-            transform: scaleX(1);
+        .hero-slide-1 { background-image: url('images/slideshow/slide1.png'); }
+        .hero-slide-2 { background-image: url('images/slideshow/slide2.png'); }
+
+        /* Slide dots */
+        .hero-slide-dots {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            display: flex;
+            gap: 10px;
         }
 
-        .form-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.15);
-            border-color: #fecaca;
+        .slide-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s;
+            padding: 0;
         }
 
-        .icon-wrapper {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            border-radius: 50%;
+        .slide-dot.active {
+            background: var(--primary-color, #CC0000);
+            width: 30px;
+        }
+
+        /* Hero content above slideshow */
+        .hero-section .container,
+        .hero-section .hero-stats {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-section .hero-pattern { display: none; }
+
+        /* ===== NAVBAR LOGO ===== */
+        .navbar-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        /* ===== PROPERTY IMAGES ===== */
+        .property-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .property-img.large { height: 380px; }
+
+        .shop-image-wrap:hover .property-img {
+            transform: scale(1.05);
+        }
+
+        /* ===== ABOUT IMAGES ===== */
+        .about-real-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        /* ===== AVATAR IMAGES ===== */
+        .avatar-real-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 75%;
+            
+            flex-shrink: 0;
+            border: 2.5px solid var(--primary-color, #CC0000);
+        }
+
+        /* ===== ACADEMY ENROLL CARD (no form) ===== */
+        .academy-enroll-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 20px;
+            padding: 48px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .academy-enroll-card .launching-badge {
+            display: inline-block;
+            background: #c9a84c;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 8px 22px;
+            border-radius: 30px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(201,168,76,0.45);
+        }
+
+        .academy-enroll-card h3 {
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .academy-enroll-card > p {
+            color: rgba(255,255,255,0.68);
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.75;
+        }
+
+        .academy-course-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 34px;
+            text-align: left;
+        }
+
+        .academy-course-list li {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            transition: all 0.3s ease;
+            gap: 12px;
+            padding: 11px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.82);
+            font-size: 15px;
         }
 
-        .form-card:hover .icon-wrapper {
-            transform: scale(1.1) rotate(5deg);
+        .academy-course-list li:last-child { border-bottom: 0; }
+
+        .academy-course-list li i {
+            color: #CC0000;
+            font-size: 18px;
+            flex-shrink: 0;
         }
 
-        .icon-wrapper svg {
-            width: 35px;
-            height: 35px;
-            fill: white;
-        }
-
-        .form-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 12px;
-        }
-
-        .form-description {
-            font-size: 0.95rem;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .form-link {
+        .btn-enroll-big {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: #dc2626;
-            font-weight: 500;
+            justify-content: center;
+            gap: 10px;
+            background: #CC0000;
+            color: #fff !important;
+            border: none;
+            border-radius: 50px;
+            padding: 17px 38px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none !important;
+            width: 100%;
+            box-shadow: 0 6px 22px rgba(204,0,0,0.45);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-enroll-big:hover {
+            background: #990000;
+            box-shadow: 0 10px 30px rgba(204,0,0,0.6);
+            transform: translateY(-3px);
+            color: #fff !important;
+        }
+
+        .academy-enroll-note {
+            margin-top: 16px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.38);
+        }
+
+        /* ===== CONTACT SOCIAL LINKS ===== */
+        .contact-social-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: gap 0.3s ease;
+            transition: all 0.3s;
+            font-size: 15px;
+            font-weight: 500;
         }
 
-        .form-card:hover .form-link {
-            gap: 12px;
+        .contact-social-link:hover { color: #fff; }
+        .contact-social-link.instagram:hover { background: rgba(193,53,132,0.2); border-color: rgba(193,53,132,0.5); }
+        .contact-social-link.facebook:hover  { background: rgba(24,119,242,0.2); border-color: rgba(24,119,242,0.5); }
+        .contact-social-link.twitter:hover   { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+        .contact-social-link.whatsapp:hover  { background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.4); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991px) {
+            .property-img { height: 220px; }
+            .property-img.large { height: 260px; }
+            .academy-enroll-card { padding: 32px 22px; }
+            .hero-slide-dots { bottom: 115px; }
         }
 
-        .form-link svg {
-            width: 16px;
-            height: 16px;
-            fill: #dc2626;
-        }
-
-        .footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .footer-text {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 24px;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .forms-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .form-card {
-                padding: 32px 24px;
-            }
-
-            .form-title {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .container {
-                padding: 30px 20px;
-            }
-
-            .icon-wrapper {
-                width: 60px;
-                height: 60px;
-            }
-
-            .icon-wrapper svg {
-                width: 30px;
-                height: 30px;
-            }
+        @media (max-width: 576px) {
+            .property-img { height: 200px; }
+            .property-img.large { height: 220px; }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="logo-section">
-            <h1>Eunix Properties Forms</h1>
-            <p class="subtitle">Choose your path to get started</p>
-            <div class="divider"></div>
-        </div>
 
-        <div class="forms-grid">
-            <!-- Investors Form -->
-            <div class="form-card" onclick="window.open('https://forms.gle/fe2HG5843N6RzyUt6', '_blank')">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.86-.96-6-4.86-6-8.5V8.41l6-3.14 6 3.14V11.5c0 3.64-2.14 7.54-6 8.5z"/>
-                        <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                    </svg>
-                </div>
-                <h2 class="form-title">Investors</h2>
-                <p class="form-description">Explore investment opportunities and join our network of partners</p>
-                <a href="https://forms.gle/fe2HG5843N6RzyUt6" target="_blank" class="form-link">
-                    Access Form
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </a>
-            </div>
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-lg" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/eunix-logo.png" alt="Eunix Properties Logo" class="navbar-logo">
+                EUNIX <span class="brand-red ms-1">PROPERTIES</span>
+            </a>
 
-            <!-- Student Form -->
-            <div class="form-card" onclick="window.open('https://forms.gle/vY7bP2tY5QMEVvqe9', '_blank')">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                    </svg>
-                </div>
-                <h2 class="form-title">Students</h2>
-                <p class="form-description">Find your ideal student accommodation with us</p>
-                <a href="https://forms.gle/vY7bP2tY5QMEVvqe9" target="_blank" class="form-link">
-                    Access Form
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </a>
-            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <!-- Realtor Form -->
-            <div class="form-card" onclick="window.open('https://forms.gle/iQM8uTa9qKeDk27F7', '_blank')">
-                <div class="icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                </div>
-                <h2 class="form-title">Realtors</h2>
-                <p class="form-description">Partner with us and grow your real estate business</p>
-                <a href="https://forms.gle/iQM8uTa9qKeDk27F7" target="_blank" class="form-link">
-                    Access Form
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active click-scroll" href="#section_1">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_3">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_academy">Academy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forms.html">Forms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="footer">
-            <p class="footer-text">© 2025 Eunix Properties. All rights reserved.</p>
+    <main>
+
+        <!-- ======== HERO SECTION — AUTO SLIDESHOW ======== -->
+        <section class="hero-section" id="section_1">
+
+            <!-- Slideshow background -->
+            <div class="hero-slideshow">
+                <div class="hero-slide hero-slide-1 active"></div>
+                <div class="hero-slide hero-slide-2"></div>
+            </div>
+
+            <!-- Slide indicator dots -->
+            <div class="hero-slide-dots">
+                <button class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
+            </div>
+
+            <!-- Content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-12 text-center mx-auto">
+                        <div class="hero-section-text">
+                            <small class="section-small-title">
+                                <i class="bi-geo-alt-fill me-1"></i> Nigeria's Premier Real Estate Company
+                            </small>
+
+                            <h1 class="hero-title mt-3 mb-3">
+                                Your Dream Property <br>
+                                <span style="color: var(--primary-color);">Awaits You</span>
+                            </h1>
+
+                            <p class="hero-subtitle mb-5">
+                                Premium land and property solutions across Nigeria.<br>Trusted by hundreds of families and investors.
+                            </p>
+
+                            <div class="hero-btn d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                                <a href="#section_3" class="custom-btn click-scroll">
+                                    <i class="bi-buildings me-2"></i> View Properties
+                                </a>
+                                <a href="https://wa.me/2348134526271" class="btn-whatsapp" target="_blank">
+                                    <i class="bi-whatsapp me-2"></i> Chat Now
+                                </a>
+                            </div>
+
+                            <div class="mt-5">
+                                <a class="bi-arrow-down hero-btn-link click-scroll" href="#section_stats"
+                                    style="display:inline-flex; align-items:center; justify-content:center; text-decoration:none;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="hero-stats mt-auto" id="section_stats">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-6 hero-stat-item">
+                            <span class="hero-stat-number">50+</span>
+                            <span class="hero-stat-label">Properties Sold</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 hero-stat-item">
+                            <span class="hero-stat-number">30+</span>
+                            <span class="hero-stat-label">Happy Clients</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 hero-stat-item">
+                            <span class="hero-stat-number">5+</span>
+                            <span class="hero-stat-label">Years Experience</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 hero-stat-item">
+                            <span class="hero-stat-number">5+</span>
+                            <span class="hero-stat-label">Estates Developed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== ABOUT SECTION ======== -->
+        <section class="about-section section-padding" id="section_2">
+            <div class="container">
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-5 col-12">
+                        <small class="section-small-title">Our Story</small>
+                        <span class="section-divider"></span>
+                        <h2 class="mt-2 mb-4">
+                            Introducing <span class="eunix-red">Eunix</span> Properties
+                        </h2>
+
+                        <p class="mb-3">
+                            <strong>Eunix Properties Ltd</strong> is a fast-growing real estate development and management company committed to providing high-quality, affordable, and sustainable housing solutions across Nigeria.
+                        </p>
+
+                        <p class="mb-4">
+                            The company prides itself on professionalism, integrity, and customer satisfaction — offering a wide range of real estate services including property development, facility management, land acquisition, consultancy, and investment advisory.
+                        </p>
+
+                        <ul class="values-list mb-4">
+                            <li><i class="bi-check-circle-fill"></i> Integrity &amp; Professionalism</li>
+                            <li><i class="bi-check-circle-fill"></i> Innovation &amp; Transparency</li>
+                            <li><i class="bi-check-circle-fill"></i> Customer Satisfaction First</li>
+                            <li><i class="bi-check-circle-fill"></i> Global Real Estate Standards</li>
+                        </ul>
+
+                        <a href="#section_5" class="custom-btn click-scroll">
+                            <i class="bi-envelope me-2"></i> Get in Touch
+                        </a>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-7 col-7">
+                        <div class="about-image" style="height:380px; overflow:hidden;">
+                            <img src="images/about/about1.png" alt="Eunix Properties Building" class="about-real-img">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="row g-4 mt-5">
+                    <div class="col-lg-6 col-12">
+                        <div class="custom-block">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="service-icon" style="width:52px; height:52px; font-size:24px; flex-shrink:0;">
+                                    <i class="bi-compass"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Our Mission</h5>
+                                    <p class="mb-0">To deliver reliable, innovative, and value-driven real estate solutions that meet global standards while enhancing the living experience and investment opportunities for our clients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="custom-block">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="service-icon" style="width:52px; height:52px; font-size:24px; flex-shrink:0;">
+                                    <i class="bi-eye"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Our Vision</h5>
+                                    <p class="mb-0">To become one of Africa's leading real estate companies known for excellence, sustainability, and trust while transforming communities and shaping the future of property development.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== OFFICE HOURS STRIP ======== -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-5 col-12">
+                        <div class="hours-card">
+                            <h4><i class="bi-clock me-2 eunix-red"></i> Office Hours</h4>
+                            <div class="hours-item">
+                                <span class="hours-day"><i class="bi-calendar3 me-2"></i>Monday – Friday</span>
+                                <span class="hours-time">8:00 AM – 6:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="hours-day"><i class="bi-calendar3 me-2"></i>Saturday</span>
+                                <span class="hours-time">9:00 AM – 4:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="hours-day"><i class="bi-calendar3 me-2"></i>Sunday</span>
+                                <span class="hours-closed">By Appointment</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <div class="row g-3">
+                            <div class="col-md-4 col-6 text-center">
+                                <div class="p-4" style="background:var(--section-bg-color); border-radius:12px; border-top:3px solid var(--primary-color); box-shadow:0 4px 15px rgba(0,0,0,0.07);">
+                                    <i class="bi-telephone-fill eunix-red" style="font-size:28px;"></i>
+                                    <p class="mt-2 mb-1" style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--dark-color);">Call Us</p>
+                                    <a href="tel:08134526271" style="font-size:14px; color:var(--p-color);">08134526271</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center">
+                                <div class="p-4" style="background:var(--section-bg-color); border-radius:12px; border-top:3px solid #25d366; box-shadow:0 4px 15px rgba(0,0,0,0.07);">
+                                    <i class="bi-whatsapp" style="font-size:28px; color:#25d366;"></i>
+                                    <p class="mt-2 mb-1" style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--dark-color);">WhatsApp</p>
+                                    <a href="https://wa.me/2348134526271" target="_blank" style="font-size:14px; color:var(--p-color);">08134526271</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 text-center">
+                                <div class="p-4" style="background:var(--section-bg-color); border-radius:12px; border-top:3px solid var(--primary-color); box-shadow:0 4px 15px rgba(0,0,0,0.07);">
+                                    <i class="bi-geo-alt-fill eunix-red" style="font-size:28px;"></i>
+                                    <p class="mt-2 mb-1" style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--dark-color);">Location</p>
+                                    <span style="font-size:13px; color:var(--p-color);">Omehoma Plaza, SARS Road</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== SERVICES SECTION ======== -->
+        <section class="services-section" id="section_services">
+            <div class="container">
+                <div class="row mb-5 text-center">
+                    <div class="col-12">
+                        <small class="section-small-title">What We Offer</small>
+                        <span class="section-divider mx-auto"></span>
+                        <h2 class="mt-2">Our <span class="eunix-red">Services</span></h2>
+                        <p class="mx-auto" style="max-width:600px;">We provide comprehensive real estate services tailored to meet your needs — from property acquisition to facility management and investment advisory.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-house-door-fill"></i></div>
+                            <h5>Buying &amp; Selling of Properties</h5>
+                            <p>We connect buyers and sellers of residential and commercial properties across Nigeria, ensuring seamless, transparent, and profitable transactions.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-tools"></i></div>
+                            <h5>Project Management</h5>
+                            <p>From planning to execution, we oversee real estate development projects ensuring quality delivery on time and within budget.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-building-gear"></i></div>
+                            <h5>Facility Management</h5>
+                            <p>We provide professional facility management services to maintain, operate, and enhance the value of your property assets.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-door-open-fill"></i></div>
+                            <h5>Shortlet &amp; Serviced Apartments</h5>
+                            <p>Premium short-term and long-term furnished apartments for business travelers, expatriates, and vacationers in prime locations.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-hammer"></i></div>
+                            <h5>General Contracts</h5>
+                            <p>We undertake general construction and civil engineering contracts, bringing expertise and precision to every project we handle.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="bi-graph-up-arrow"></i></div>
+                            <h5>Investment Advisory</h5>
+                            <p>Expert guidance to help you make the most out of real estate investments. We analyze markets and identify high-yield opportunities for you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== PROPERTIES SECTION ======== -->
+        <section class="shop-section section-padding" id="section_3">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 col-12">
+                        <small class="section-small-title">Available Listings</small>
+                        <span class="section-divider"></span>
+                        <h2 class="mt-2"><span class="eunix-red">Properties</span> &amp; Land</h2>
+                        <p>Explore our premium selection of lands and properties at strategic locations across Rivers State and beyond.</p>
+                    </div>
+                    <div class="col-lg-4 col-12 d-flex align-items-center justify-content-lg-end mt-3 mt-lg-0">
+                        <a href="#section_5" class="custom-btn click-scroll">
+                            <i class="bi-chat-dots me-2"></i> Enquire Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Property 1 — Linco Garden (Featured) -->
+                    <div class="col-lg-6 col-12">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property1.png" alt="Linco Garden Estate" class="property-img large">
+                                
+                                
+                                
+                                
+                                
+                               
+                                
+                                
+                                <div class="shop-btn-wrap">
+                                    <a href="linco-garden-details.html" class="shop-btn">View Details</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <div class="mb-2">
+                                    <span class="property-tag featured">⭐ Featured</span>
+                                    <span class="property-tag available">Available</span>
+                                </div>
+                                <h4>Linco Garden Estate</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Isiokpo, Port Harcourt, Rivers State</p>
+                                <div class="d-flex gap-3 mt-2" style="font-size:13px; color:var(--p-color); flex-wrap:wrap;">
+                                    <span><i class="bi-rulers me-1"></i> Various Plots</span>
+                                    <span><i class="bi-check2-circle me-1 text-success"></i> Survey Included</span>
+                                    <span><i class="bi-shield-check me-1"></i> C of O</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="col-lg-6 col-12">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property2.png" alt="Premium Serviced Apartments" class="property-img large">
+                                
+                                
+                        
+
+                                <div class="shop-btn-wrap">
+                                    <a href="#section_5" class="shop-btn click-scroll">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <div class="mb-2">
+                                    <span class="property-tag">Shortlet</span>
+                                    <span class="property-tag available">Available</span>
+                                </div>
+                                <h4>Premium Serviced Apartments</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Port Harcourt, Rivers State</p>
+                                <div class="d-flex gap-3 mt-2" style="font-size:13px; color:var(--p-color);">
+                                    <span><i class="bi-wifi me-1"></i> Free WiFi</span>
+                                    <span><i class="bi-snow me-1"></i> A/C</span>
+                                    <span><i class="bi-shield-check me-1"></i> 24/7 Security</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="col-lg-4 col-12">
+                        <div class="shop-thumb">
+
+
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property3.png" alt="Commercial Land" class="property-img">
+
+
+
+                                <div class="shop-btn-wrap">
+                                    <a href="#section_5" class="shop-btn click-scroll">Enquire</a>
+                                </div>
+                            </div>
+
+                            
+                            <div class="shop-body">
+                                <div class="mb-2"><span class="property-tag">Commercial</span></div>
+                                <h4>Commercial Land</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Port Harcourt</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 4 -->
+                    <div class="col-lg-4 col-12">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property4.png" alt="Family Home" class="property-img">
+                               
+                                <div class="shop-btn-wrap">
+                                    <a href="#section_5" class="shop-btn click-scroll">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <div class="mb-2"><span class="property-tag available">Residential</span></div>
+                                <h4>Family Home</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Rivers State</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 5 -->
+                    <div class="col-lg-4 col-12">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property5.png" alt="Estate Plots" class="property-img">
+                    
+                                <div class="shop-btn-wrap">
+                                    <a href="#section_5" class="shop-btn click-scroll">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <div class="mb-2"><span class="property-tag available">Land</span></div>
+                                <h4>Estate Plots</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Rivers State</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-3">
+                        <a href="#section_5" class="custom-btn click-scroll">
+                            <i class="bi-telephone me-2"></i> Speak to an Agent
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== ACADEMY SECTION ======== -->
+        <section class="academy-section" id="section_academy">
+            <div class="container">
+                <div class="row align-items-center g-5">
+
+                    <!-- LEFT: Info & Benefits -->
+                    <div class="col-lg-6 col-12">
+                        <small class="section-small-title">
+                            <i class="bi-mortarboard me-1"></i> Learning Hub
+                        </small>
+                        <h2 class="mt-2 mb-4" style="color:white;">
+                            Eunix Properties <br><span style="color:var(--primary-color);">Academy</span>
+                        </h2>
+                        <p class="mb-5">
+                            Unlock the power of real estate knowledge. Our academy equips you with the tools, strategies, and insider knowledge to invest, develop, and thrive in Nigeria's property market — whether you're a beginner or a seasoned professional.
+                        </p>
+
+                        <div class="academy-benefit-card">
+                            <div class="academy-benefit-icon"><i class="bi-book-fill"></i></div>
+                            <div>
+                                <h6>Real Estate Fundamentals</h6>
+                                <p>Learn how to identify, evaluate, and acquire profitable properties across Nigeria.</p>
+                            </div>
+                        </div>
+                        <div class="academy-benefit-card">
+                            <div class="academy-benefit-icon"><i class="bi-cash-stack"></i></div>
+                            <div>
+                                <h6>Investment Strategies</h6>
+                                <p>Understand financing, ROI calculations, and how to grow your portfolio strategically.</p>
+                            </div>
+                        </div>
+                        <div class="academy-benefit-card">
+                            <div class="academy-benefit-icon"><i class="bi-file-earmark-text-fill"></i></div>
+                            <div>
+                                <h6>Legal &amp; Documentation</h6>
+                                <p>Navigate land titles, C of O, deed of assignments, and other critical legal frameworks.</p>
+                            </div>
+                        </div>
+                        <div class="academy-benefit-card">
+                            <div class="academy-benefit-icon"><i class="bi-people-fill"></i></div>
+                            <div>
+                                <h6>Mentorship &amp; Community</h6>
+                                <p>Connect with experienced industry professionals and a growing community of investors.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Enroll Card (no form) -->
+                    <div class="col-lg-6 col-12">
+                        <div class="academy-enroll-card">
+                            <span class="launching-badge">🎓 Enroll Now — Free Orientation</span>
+                            <h3>Join the Academy Today</h3>
+                            <p>Hundreds of Nigerians are already building generational wealth through real estate. Don't get left behind — start your journey with the Eunix Properties Academy.</p>
+
+                            <ul class="academy-course-list">
+                                <li><i class="bi-check-circle-fill"></i> Real Estate Investment Basics</li>
+                                <li><i class="bi-check-circle-fill"></i> Land Acquisition &amp; Documentation</li>
+                                <li><i class="bi-check-circle-fill"></i> Property Development &amp; Management</li>
+                                <li><i class="bi-check-circle-fill"></i> Short-Term Rental Business</li>
+                                <li><i class="bi-check-circle-fill"></i> Full Real Estate Mastery Program</li>
+                            </ul>
+
+                            <a href="https://forms.gle/vY7bP2tY5QMEVvqe9" target="_blank" class="btn-enroll-big">
+                                <i class="bi-mortarboard"></i> Enroll in the Academy
+                            </a>
+
+                            <p class="academy-enroll-note">
+                                <i class="bi-shield-lock me-1"></i> Your information is 100% secure and private.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== REVIEWS SECTION ======== -->
+        <section class="reviews-section" id="section_4">
+            <div class="container">
+                <div class="row mb-5 text-center">
+                    <div class="col-12">
+                        <small class="section-small-title">Testimonials</small>
+                        <span class="section-divider mx-auto"></span>
+                        <h2 class="mt-2">What Our <span class="eunix-red">Clients Say</span></h2>
+                        <p>Trusted by hundreds of satisfied property owners and investors across Nigeria.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="owl-carousel reviews-carousel owl-theme">
+
+                            <div class="reviews-thumb">
+                                <div class="reviews-body">
+                                    <div class="reviews-icons mb-3">
+                                        <i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i>
+                                    </div>
+                                    <h4>"Eunix Properties made my dream of owning land in Port Harcourt a reality. The process was transparent and stress-free!"</h4>
+                                </div>
+                                <div class="reviews-bottom d-flex align-items-center">
+                                   
+                                    <div class="ms-3">
+                                        <p class="text-white mb-0"><strong>Chidinma O.</strong></p>
+                                        <small style="color:rgba(255,255,255,0.5);">Business Owner, Port Harcourt</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviews-thumb">
+                                <div class="reviews-body">
+                                    <div class="reviews-icons mb-3">
+                                        <i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i>
+                                    </div>
+                                    <h4>"Professional team, prompt responses, and great value for money. I bought my plot at Linco Garden and couldn't be happier."</h4>
+                                </div>
+                                <div class="reviews-bottom d-flex align-items-center">
+                                    <div class="ms-3">
+                                        <p class="text-white mb-0"><strong>Emeka P.</strong></p>
+                                        <small style="color:rgba(255,255,255,0.5);">Engineer, Lagos</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviews-thumb">
+                                <div class="reviews-body">
+                                    <div class="reviews-icons mb-3">
+                                        <i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-half"></i>
+                                    </div>
+                                    <h4>"The Eunix Academy gave me the confidence to invest in real estate. Their training is practical and results-focused."</h4>
+                                </div>
+                                <div class="reviews-bottom d-flex align-items-center">
+                                    
+                                    <div class="ms-3">
+                                        <p class="text-white mb-0"><strong>Blessing T.</strong></p>
+                                        <small style="color:rgba(255,255,255,0.5);">Entrepreneur, Abuja</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviews-thumb">
+                                <div class="reviews-body">
+                                    <div class="reviews-icons mb-3">
+                                        <i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i>
+                                    </div>
+                                    <h4>"I engaged Eunix for facility management of my apartments. Exceptional service, highly professional team!"</h4>
+                                </div>
+                                <div class="reviews-bottom d-flex align-items-center">
+                                
+                                    <div class="ms-3">
+                                        <p class="text-white mb-0"><strong>Godswill A.</strong></p>
+                                        <small style="color:rgba(255,255,255,0.5);">Property Investor, PH</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviews-thumb">
+                                <div class="reviews-body">
+                                    <div class="reviews-icons mb-3">
+                                        <i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i><i class="bi-star-fill"></i>
+                                    </div>
+                                    <h4>"The shortlet apartment was beautifully furnished and perfectly located. Will definitely book again with Eunix!"</h4>
+                                </div>
+                                <div class="reviews-bottom d-flex align-items-center">
+                                    
+                                    <div class="ms-3">
+                                        <p class="text-white mb-0"><strong>Sandra M.</strong></p>
+                                        <small style="color:rgba(255,255,255,0.5);">Business Traveler</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-5">
+                        <p class="d-flex justify-content-center align-items-center flex-wrap gap-2">
+                            Share your experience with us on
+                            <a href="https://www.facebook.com/share/1731bRYAtq/" target="_blank"
+                                class="custom-btn ms-2" style="font-size:13px; padding:10px 20px;">
+                                <i class="bi-facebook me-2"></i> Facebook
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== CONTACT SECTION — INFO ONLY (NO FORM) ======== -->
+        <section class="contact-section section-padding" id="section_5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" style="display:block; margin-top:-1px;">
+                <path fill="#f8f8f8" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L0,0Z"></path>
+            </svg>
+            <div class="container">
+                <div class="row mb-5 text-center">
+                    <div class="col-12">
+                        <small class="section-small-title">Get In Touch</small>
+                        <span class="section-divider mx-auto"></span>
+                        <h2 class="mt-2">Say <span class="eunix-red">Hello</span> to Us</h2>
+                        <p>We're ready to help you find your dream property. Reach out and let's talk.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+
+                    <!-- Address Card -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="contact-info-block h-100">
+                            <div class="text-center mb-4">
+                                <div style="width:64px; height:64px; background:rgba(204,0,0,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                                    <i class="bi-geo-alt-fill" style="font-size:28px; color:var(--primary-color);"></i>
+                                </div>
+                                <h3 style="font-size:22px;">Our Office</h3>
+                            </div>
+                            <div class="contact-info-item mb-3">
+                                <i class="bi-building" style="color:var(--primary-color); font-size:20px; flex-shrink:0; margin-top:3px;"></i>
+                                <span>Omehoma Plaza,<br>No. 2 Celestial Omehia Way,<br>Omehoma House, SARS Road,<br>Port Harcourt, Rivers State.</span>
+                            </div>
+                            <div class="mt-4">
+                                <iframe class="google-map"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.6543!2d6.9944!3d4.8156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDgnNTYuMiJOIDblwrA1OSczOS44IkU!5e0!3m2!1sen!2sng!4v1679331839559!5m2!1sen!2sng"
+                                    width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="contact-info-block h-100">
+                            <div class="text-center mb-4">
+                                <div style="width:64px; height:64px; background:rgba(204,0,0,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                                    <i class="bi-telephone-fill" style="font-size:28px; color:var(--primary-color);"></i>
+                                </div>
+                                <h3 style="font-size:22px;">Contact Info</h3>
+                            </div>
+
+                            <div class="contact-info-item mb-4">
+                                <i class="bi-telephone" style="color:var(--primary-color); font-size:20px; flex-shrink:0;"></i>
+                                <div>
+                                    <p class="mb-1" style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Phone Numbers</p>
+                                    <a href="tel:08134526271" style="display:block; font-size:17px; font-weight:600;">08134526271</a>
+                                    <a href="tel:08024728636" style="display:block; font-size:17px; font-weight:600;">08024728636</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-item mb-4">
+                                <i class="bi-whatsapp" style="color:#25d366; font-size:20px; flex-shrink:0;"></i>
+                                <div>
+                                    <p class="mb-1" style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">WhatsApp</p>
+                                    <a href="https://wa.me/2348134526271" target="_blank" style="font-size:17px; font-weight:600; color:#25d366;">08134526271</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="bi-envelope" style="color:var(--primary-color); font-size:20px; flex-shrink:0;"></i>
+                                <div>
+                                    <p class="mb-1" style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Email</p>
+                                    <a href="mailto:info@eunixproperties.com" style="font-size:15px; font-weight:500;">info@eunixproperties.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Card -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="contact-info-block h-100">
+                            <div class="text-center mb-4">
+                                <div style="width:64px; height:64px; background:rgba(204,0,0,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                                    <i class="bi-share-fill" style="font-size:28px; color:var(--primary-color);"></i>
+                                </div>
+                                <h3 style="font-size:22px;">Follow Us</h3>
+                                <p style="color:rgba(255,255,255,0.6); font-size:14px;">Stay updated with our latest listings and news.</p>
+                            </div>
+
+                            <div class="d-flex flex-column gap-3">
+                                <a href="https://www.instagram.com/eunixproperties?igsh=MTVuN3ZsMjc5MGhhdA==" target="_blank" class="contact-social-link instagram">
+                                    <i class="bi-instagram" style="font-size:22px; color:#c13584;"></i>
+                                    <span>@eunixproperties</span>
+                                </a>
+                                <a href="https://www.facebook.com/share/1731bRYAtq/" target="_blank" class="contact-social-link facebook">
+                                    <i class="bi-facebook" style="font-size:22px; color:#1877f2;"></i>
+                                    <span>Eunix Properties</span>
+                                </a>
+                                <a href="https://x.com/eunixproperties?s=21" target="_blank" class="contact-social-link twitter">
+                                    <i class="bi-twitter-x" style="font-size:22px; color:#fff;"></i>
+                                    <span>@eunixproperties</span>
+                                </a>
+                                <a href="https://wa.me/2348134526271" target="_blank" class="contact-social-link whatsapp">
+                                    <i class="bi-whatsapp" style="font-size:22px; color:#25d366;"></i>
+                                    <span>Chat on WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" style="display:block; background:#fff;">
+            <path fill="#1a1a1a" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,80L0,80Z"></path>
+        </svg>
+
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <a href="index.html" class="d-flex align-items-center mb-3" style="text-decoration:none;">
+                        <img src="images/eunix-logo.png" alt="Eunix Logo" style="width:36px; height:36px; object-fit:contain; margin-right:10px; border-radius:5px;">
+                        <span class="footer-brand">EUNIX <span style="color:var(--primary-color);">PROPERTIES</span></span>
+                    </a>
+                    <p class="mb-3">A fast-growing real estate development and management company delivering high-quality, affordable, and sustainable housing solutions across Nigeria.</p>
+                    <ul class="footer-social-icons">
+                        <li><a href="https://www.instagram.com/eunixproperties?igsh=MTVuN3ZsMjc5MGhhdA==" target="_blank" class="social-icon-link bi-instagram" title="Instagram"></a></li>
+                        <li><a href="https://www.facebook.com/share/1731bRYAtq/" target="_blank" class="social-icon-link bi-facebook" title="Facebook"></a></li>
+                        <li><a href="https://x.com/eunixproperties?s=21" target="_blank" class="social-icon-link bi-twitter-x" title="X"></a></li>
+                        <li><a href="https://wa.me/2348134526271" target="_blank" class="social-icon-link bi-whatsapp" title="WhatsApp"></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section_1">Home</a></li>
+                        <li><a href="#section_2">About Us</a></li>
+                        <li><a href="#section_services">Services</a></li>
+                        <li><a href="#section_3">Properties</a></li>
+                        <li><a href="#section_academy">Academy</a></li>
+                        <li><a href="#section_4">Reviews</a></li>
+                        <li><a href="#section_5">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h3>Pages</h3>
+                    <ul class="footer-links">
+                        <li><a href="linco-garden-details.html">Linco Garden</a></li>
+                        <li><a href="forms.html">Forms</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                    <h3 class="mt-4">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section_services">Buy/Sell Property</a></li>
+                        <li><a href="#section_services">Shortlet Apts</a></li>
+                        <li><a href="#section_services">Facility Mgmt</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info-item mb-3">
+                        <i class="bi-geo-alt-fill" style="color:var(--primary-color);font-size:18px;flex-shrink:0;margin-top:2px;"></i>
+                        <span>Omehoma Plaza, No. 2 Celestial Omehia Way, SARS Road, Port Harcourt, Rivers State.</span>
+                    </div>
+                    <div class="contact-info-item mb-2">
+                        <i class="bi-telephone-fill" style="color:var(--primary-color);font-size:16px;flex-shrink:0;"></i>
+                        <div>
+                            <a href="tel:08134526271">08134526271</a><br>
+                            <a href="tel:08024728636">08024728636</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item mb-2">
+                        <i class="bi-whatsapp" style="color:#25d366;font-size:16px;flex-shrink:0;"></i>
+                        <a href="https://wa.me/2348134526271" target="_blank">08134526271</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi-envelope-fill" style="color:var(--primary-color);font-size:16px;flex-shrink:0;"></i>
+                        <a href="mailto:info@eunixproperties.com">info@eunixproperties.com</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-12">
+                        <p class="copyright-text mb-0">&copy; 2026 Eunix Properties Ltd. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 col-12 text-md-end">
+                        <p class="developer-credit mb-0">
+                            Developed by <a href="https://codelikewyna.com.ng" target="_blank">CodeLikeWyna Tech</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/2348134526271" target="_blank" title="Chat on WhatsApp">
+            <i class="bi-whatsapp"></i>
+        </a>
     </div>
+
+    <!-- JS FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        // ===== HERO AUTO SLIDESHOW =====
+        (function () {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.slide-dot');
+            let current = 0;
+            let autoTimer;
+
+            function goTo(index) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (index + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function startAuto() {
+                autoTimer = setInterval(function () { goTo(current + 1); }, 5000);
+            }
+
+            function stopAuto() { clearInterval(autoTimer); }
+
+            dots.forEach(function (dot, i) {
+                dot.addEventListener('click', function () {
+                    stopAuto();
+                    goTo(i);
+                    startAuto();
+                });
+            });
+
+            startAuto();
+        })();
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', function () {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== OWL CAROUSEL — REVIEWS =====
+        $(document).ready(function () {
+            if (typeof $.fn.owlCarousel !== 'undefined') {
+                $('.reviews-carousel').owlCarousel({
+                    loop: true,
+                    margin: 24,
+                    nav: false,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0:    { items: 1 },
+                        768:  { items: 2 },
+                        1024: { items: 3 }
+                    }
+                });
+            }
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('.click-scroll').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const navEl = document.getElementById('navbarNav');
+                    if (navEl && navEl.classList.contains('show')) {
+                        new bootstrap.Collapse(navEl, { toggle: false }).hide();
+                    }
+                }
+            });
+        });
+
+        // ===== ACTIVE NAV ON SCROLL =====
+        const navSections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', function () {
+            let pos = window.scrollY + 110;
+            navSections.forEach(function (sec) {
+                if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+                    document.querySelectorAll('.navbar-nav .nav-link').forEach(function (lnk) {
+                        lnk.classList.remove('active');
+                        if (lnk.getAttribute('href') === '#' + sec.id) lnk.classList.add('active');
+                    });
+                }
+            });
+        });
+
+        // ===== FADE-UP ON SCROLL =====
+        const fadeEls = document.querySelectorAll('.fade-up');
+        if (fadeEls.length) {
+            const obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.15 });
+            fadeEls.forEach(function (el) { obs.observe(el); });
+        }
+    </script>
 </body>
 </html>

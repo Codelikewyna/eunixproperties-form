@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Linco Garden Estate Isiokpo, Port Harcourt, Rivers State — Own a piece of the earth at ease in a very strategic location. Launching prices from ₦3.5 Million. Eunix Properties Ltd.">
+    <meta name="author" content="Eunix Properties Ltd">
+    <title>Linco Garden Estate — Eunix Properties Ltd</title>
+
+    <!-- FONTS: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/eunix-properties.css" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { font-family: 'Poppins', sans-serif !important; }
+
+        .navbar-logo { width:40px; height:40px; object-fit:contain; margin-right:10px; border-radius:6px; }
+
+        /* HERO */
+        .linco-hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 40%, #2d0000 100%);
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+        }
+
+        .linco-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 10% 40%, rgba(204,0,0,0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 90% 20%, rgba(201,168,76,0.08) 0%, transparent 40%);
+        }
+
+        .linco-hero .container { position: relative; z-index: 2; }
+
+        .breadcrumb-dark .breadcrumb-item a { color: rgba(255,255,255,0.6); font-size:14px; }
+        .breadcrumb-dark .breadcrumb-item.active { color: var(--primary-color); font-size:14px; }
+        .breadcrumb-dark .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.3); }
+
+        /* PRICE BAR */
+        .price-bar {
+            background: var(--white-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .price-pill {
+            background: rgba(204,0,0,0.08);
+            border: 1.5px solid var(--primary-color);
+            border-radius: 30px;
+            padding: 6px 18px;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 15px;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 6px;
+        }
+
+        .price-pill.highlighted {
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(204,0,0,0.3);
+        }
+
+        /* GALLERY GRID */
+        .linco-gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 280px 220px;
+            gap: 12px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .linco-gallery-grid .grid-item-main { grid-row: 1 / 3; grid-column: 1 / 2; }
+
+        .linco-gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .linco-gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .linco-gallery-item:hover img { transform: scale(1.06); }
+
+        @media (max-width:768px) {
+            .linco-gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 220px 160px 160px;
+            }
+            .linco-gallery-grid .grid-item-main { grid-row:auto; grid-column:auto; }
+        }
+
+        /* SPEC CARDS */
+        .spec-card {
+            background: var(--section-bg-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .spec-card:hover { border-color: var(--primary-color); box-shadow: 0 4px 15px rgba(204,0,0,0.1); }
+
+        .spec-card-icon {
+            width: 48px; height: 48px;
+            background: rgba(204,0,0,0.1);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: var(--primary-color); flex-shrink: 0;
+        }
+
+        .spec-card-label { font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--secondary-color); font-weight:600; display:block; }
+        .spec-card-value { font-size:16px; font-weight:700; color:var(--dark-color); display:block; }
+
+        /* PRICING TABLE */
+        .pricing-table { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.1); }
+        .pricing-table-header { background:linear-gradient(135deg,#CC0000,#990000); padding:25px 30px; text-align:center; }
+        .pricing-table-header h4 { color:#fff; margin:0; font-size:22px; }
+        .pricing-table-header p { color:rgba(255,255,255,0.75); font-size:14px; margin:5px 0 0; }
+        .pricing-table-body { padding:20px; }
+
+        .pricing-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 20px; border-radius: 10px; margin-bottom: 12px;
+            background: var(--section-bg-color);
+            border: 1.5px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .pricing-row:hover { border-color:var(--primary-color); background:rgba(204,0,0,0.04); }
+        .pricing-row.featured-price { background:rgba(204,0,0,0.06); border-color:var(--primary-color); }
+        .pricing-row .plot-type { font-weight:600; color:var(--dark-color); font-size:16px; }
+        .pricing-row .plot-desc { font-size:13px; color:var(--p-color); }
+        .pricing-row .plot-price { font-size:24px; font-weight:700; color:var(--primary-color); text-align:right; }
+        .pricing-row .plot-price small { display:block; font-size:12px; color:var(--secondary-color); font-weight:400; }
+        .launching-tag { font-size:11px; background:var(--gold-accent,#c9a84c); color:#fff; padding:2px 8px; border-radius:4px; font-weight:700; letter-spacing:0.5px; }
+
+        /* SIDEBAR STICKY */
+        .cta-sticky { position:sticky; top:150px; }
+
+        /* ENQUIRY FORM */
+        .enquiry-form-card { background:#fff; border-radius:16px; border:2px solid var(--border-color); overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.1); }
+        .enquiry-form-card .card-header { background:var(--dark-color); padding:20px 25px; border:0; }
+        .enquiry-form-card .card-header h5 { color:#fff; margin:0; font-size:18px; }
+        .enquiry-form-card .card-header p { color:rgba(255,255,255,0.6); font-size:14px; margin:5px 0 0; }
+        .enquiry-form-card .card-body { padding:25px; }
+
+        .enquiry-form-card .form-control,
+        .enquiry-form-card .form-select {
+            border:1.5px solid var(--border-color); border-radius:8px;
+            padding:12px 14px; font-size:15px; margin-bottom:14px;
+            box-shadow:0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .enquiry-form-card .form-control:focus,
+        .enquiry-form-card .form-select:focus {
+            border-color:var(--primary-color);
+            box-shadow:0 0 0 3px rgba(204,0,0,0.12);
+        }
+
+        .enquiry-form-card .form-label { font-size:13px; font-weight:600; color:var(--dark-color); margin-bottom:6px; }
+
+        .btn-enquire {
+            background: var(--primary-color); color: #fff; border: none;
+            border-radius: 10px; padding: 14px; font-size: 15px;
+            font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            width: 100%; box-shadow: 0 4px 15px rgba(204,0,0,0.35);
+            transition: all 0.3s; cursor: pointer;
+        }
+
+        .btn-enquire:hover { background:#990000; box-shadow:0 8px 25px rgba(204,0,0,0.5); transform:translateY(-2px); }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #1a0000, #2d0000);
+            border-radius: 16px; padding: 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(204,0,0,0.3) 0%, transparent 60%);
+        }
+
+        .highlight-box * { position: relative; z-index: 1; }
+
+        /* FEATURE TAGS */
+        .tag-strip { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+        .feature-tag {
+            background:#fff; border:1.5px solid var(--border-color); border-radius:30px;
+            padding:8px 18px; font-size:13px; font-weight:600; color:var(--dark-color);
+            display:inline-flex; align-items:center; gap:6px; transition:all 0.3s;
+        }
+        .feature-tag i { color:var(--primary-color); }
+        .feature-tag:hover { border-color:var(--primary-color); color:var(--primary-color); }
+
+        .map-container { border-radius:16px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.12); }
+
+        /* Related property img */
+        .related-prop-img { width:100%; height:220px; object-fit:cover; display:block; border-radius:0; transition:transform 0.5s; }
+        .shop-image-wrap:hover .related-prop-img { transform:scale(1.05); }
+
+        @media (max-width:768px) {
+            .price-bar { top:70px; }
+            .cta-sticky { position:static; }
+            .highlight-box { padding:25px; }
+        }
+    </style>
+</head>
+
+<body class="shop-detail-page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-lg" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/eunix-logo.png" alt="Eunix Properties Logo" class="navbar-logo">
+                EUNIX <span class="brand-red ms-1">PROPERTIES</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#section_1">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#section_services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html#section_3">Properties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#section_academy">Academy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="forms.html">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#section_5">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO HEADER -->
+        <section class="linco-hero">
+            <div class="container">
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb breadcrumb-dark mb-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.html#section_3">Properties</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Linco Garden Estate</li>
+                    </ol>
+                </nav>
+
+                <div class="row align-items-end">
+                    <div class="col-lg-8 col-12">
+                        <span class="launching-badge">🌿 Now Selling — Launching Prices</span>
+                        <h1 class="text-white mt-2 mb-2" style="font-size:clamp(32px,5vw,56px);">
+                            Linco Garden Estate
+                        </h1>
+                        <p class="text-white mb-3" style="font-size:18px; opacity:0.8;">
+                            <i class="bi-geo-alt-fill me-2" style="color:var(--primary-color);"></i>
+                            Isiokpo, Port Harcourt, Rivers State
+                        </p>
+                        <p class="mb-4" style="color:rgba(255,255,255,0.7); max-width:600px; font-size:17px;">
+                            Own a piece of the earth at ease in a very strategic location. Premium land plots in a serene, master-planned estate with full infrastructure.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#enquire" class="custom-btn">
+                                <i class="bi-telephone me-2"></i> Enquire Now
+                            </a>
+                            <a href="https://wa.me/2348134526271?text=Hello%2C%20I%27m%20interested%20in%20Linco%20Garden%20Estate%20plots." class="btn-whatsapp" target="_blank">
+                                <i class="bi-whatsapp me-2"></i> WhatsApp Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+                        <div class="d-flex flex-column gap-2">
+                            <div class="price-pill highlighted"><i class="bi-tag me-1"></i> From ₦3,500,000</div>
+                            <div style="color:rgba(255,255,255,0.6); font-size:13px;">
+                                <i class="bi-clock me-1"></i> Launching prices — Limited slots available!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICE BAR -->
+        <div class="price-bar">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <span class="price-pill highlighted">₦7,000,000</span>
+                        <span class="price-pill">₦4,500,000</span>
+                        <span class="price-pill">₦3,500,000</span>
+                        <small style="font-size:13px; color:var(--secondary-color);">
+                            <i class="bi-fire text-danger me-1"></i> Launching prices — Act fast!
+                        </small>
+                    </div>
+                    <div>
+                        <a href="#enquire" class="custom-btn" style="padding:10px 22px; font-size:13px;">
+                            <i class="bi-envelope me-1"></i> Get Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALLERY + OVERVIEW + SIDEBAR -->
+        <section class="shop-detail-section">
+            <div class="container">
+                <div class="row g-5">
+
+                    <!-- LEFT COLUMN -->
+                    <div class="col-lg-8 col-12">
+
+                        <!-- Gallery Grid -->
+                        <div class="linco-gallery-grid mb-5">
+                            <div class="linco-gallery-item grid-item-main">
+                                <img src="images/properties/property1.png" alt="Linco Garden Estate Entrance">
+                            </div>
+                            <div class="linco-gallery-item">
+                                <img src="images/gallery/gallery2.png" alt="Estate Plot Layout">
+                            </div>
+                            <div class="linco-gallery-item">
+                                <img src="images/gallery/gallery5.png" alt="Estate Roads">
+                            </div>
+                        </div>
+
+                        <!-- Overview -->
+                        <div class="mb-5">
+                            <small class="section-small-title">Estate Overview</small>
+                            <span class="section-divider"></span>
+                            <h2 class="mt-2 mb-4">About <span class="eunix-red">Linco Garden</span> Estate</h2>
+
+                            <p>
+                                <strong>Linco Garden Estate</strong> is a premium, master-planned residential land development by Eunix Properties Ltd, strategically located in <strong>Isiokpo, Port Harcourt, Rivers State</strong>. This estate offers an ideal environment for families and investors seeking quality land at launching prices in one of Port Harcourt's fastest-growing corridors.
+                            </p>
+
+                            <p>
+                                Whether you're looking to build your dream home or make a sound real estate investment, Linco Garden Estate presents an unmatched opportunity. The estate is designed with a thoughtful layout featuring paved roads, drainage systems, and essential infrastructure to ensure a comfortable, modern living experience.
+                            </p>
+
+                            <p>
+                                This is more than just land — it's your opportunity to <strong>own a piece of the earth at ease</strong>, in a community built for the future.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="tag-strip">
+                                <span class="feature-tag"><i class="bi-file-earmark-check"></i> Registered Survey</span>
+                                <span class="feature-tag"><i class="bi-shield-fill-check"></i> Governor's Consent</span>
+                                <span class="feature-tag"><i class="bi-road"></i> Good Road Access</span>
+                                <span class="feature-tag"><i class="bi-droplet-fill"></i> Drainage System</span>
+                                <span class="feature-tag"><i class="bi-lightning-fill"></i> Electricity Nearby</span>
+                                <span class="feature-tag"><i class="bi-geo-alt-fill"></i> Strategic Location</span>
+                                <span class="feature-tag"><i class="bi-house-door"></i> Residential Use</span>
+                                <span class="feature-tag"><i class="bi-tree"></i> Serene Environment</span>
+                            </div>
+                        </div>
+
+                        <!-- Specifications -->
+                        <div class="mb-5">
+                            <h4 class="mb-4"><i class="bi-list-check eunix-red me-2"></i> Estate Specifications</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-geo-alt-fill"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">Location</span>
+                                            <span class="spec-card-value">Isiokpo, Port Harcourt</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-building"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">State</span>
+                                            <span class="spec-card-value">Rivers State, Nigeria</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-rulers"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">Plot Sizes</span>
+                                            <span class="spec-card-value">Various Available</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-file-earmark-text-fill"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">Documentation</span>
+                                            <span class="spec-card-value">C of O / Governor's Consent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-house-check-fill"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">Use</span>
+                                            <span class="spec-card-value">Residential / Investment</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="spec-card">
+                                        <div class="spec-card-icon"><i class="bi-check-circle-fill"></i></div>
+                                        <div>
+                                            <span class="spec-card-label">Status</span>
+                                            <span class="spec-card-value" style="color:#22c55e;">Available — Selling Fast</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Why Invest -->
+                        <div class="mb-5">
+                            <h4 class="mb-4"><i class="bi-graph-up-arrow eunix-red me-2"></i> Why Invest in Linco Garden?</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-3" style="background:var(--section-bg-color); border-radius:12px;">
+                                        <i class="bi-arrow-up-circle-fill eunix-red" style="font-size:24px; flex-shrink:0; margin-top:2px;"></i>
+                                        <div>
+                                            <strong style="font-size:15px;">High Capital Appreciation</strong>
+                                            <p class="mb-0" style="font-size:14px;">Isiokpo is one of the fastest developing areas in Rivers State, ensuring your investment grows rapidly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-3" style="background:var(--section-bg-color); border-radius:12px;">
+                                        <i class="bi-map-fill eunix-red" style="font-size:24px; flex-shrink:0; margin-top:2px;"></i>
+                                        <div>
+                                            <strong style="font-size:15px;">Strategic Location</strong>
+                                            <p class="mb-0" style="font-size:14px;">Easy access to Port Harcourt city centre, airport, and major roads — prime corridor for business and residence.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-3" style="background:var(--section-bg-color); border-radius:12px;">
+                                        <i class="bi-cash-coin eunix-red" style="font-size:24px; flex-shrink:0; margin-top:2px;"></i>
+                                        <div>
+                                            <strong style="font-size:15px;">Affordable Launching Prices</strong>
+                                            <p class="mb-0" style="font-size:14px;">Get in early at launching prices before the estate is fully developed and prices increase significantly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3 p-3" style="background:var(--section-bg-color); border-radius:12px;">
+                                        <i class="bi-shield-check eunix-red" style="font-size:24px; flex-shrink:0; margin-top:2px;"></i>
+                                        <div>
+                                            <strong style="font-size:15px;">Secure Documentation</strong>
+                                            <p class="mb-0" style="font-size:14px;">Proper legal documentation including survey plans and governor's consent for a completely secure purchase.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map -->
+                        <div class="mb-5">
+                            <h4 class="mb-4"><i class="bi-pin-map-fill eunix-red me-2"></i> Estate Location</h4>
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4!2d6.9!3d4.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSXNpb2twbywgUml2ZXJzIFN0YXRl!5e0!3m2!1sen!2sng!4v1679331839559!5m2!1sen!2sng" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SIDEBAR -->
+                    <div class="col-lg-4 col-12">
+                        <div class="cta-sticky">
+
+                            <!-- Pricing Table -->
+                            <div class="pricing-table mb-4">
+                                <div class="pricing-table-header">
+                                    <h4><i class="bi-tag-fill me-2"></i> Launching Prices</h4>
+                                    <p>Limited slots — Act fast before prices increase!</p>
+                                </div>
+                                <div class="pricing-table-body">
+
+                                    <div class="pricing-row featured-price">
+                                        <div>
+                                            <span class="plot-type d-block">Standard Plot</span>
+                                            <span class="plot-desc d-block">Ideal for single-family home</span>
+                                            <span class="launching-tag mt-1 d-inline-block">🔥 Hot Deal</span>
+                                        </div>
+                                        <div class="plot-price">
+                                            ₦7M
+                                            <small>Full Payment</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="pricing-row">
+                                        <div>
+                                            <span class="plot-type d-block">Mid-Size Plot</span>
+                                            <span class="plot-desc d-block">Great investment option</span>
+                                        </div>
+                                        <div class="plot-price">
+                                            ₦4.5M
+                                            <small>Full Payment</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="pricing-row">
+                                        <div>
+                                            <span class="plot-type d-block">Starter Plot</span>
+                                            <span class="plot-desc d-block">Perfect for first-time buyer</span>
+                                            <span class="launching-tag mt-1 d-inline-block">💫 Best Value</span>
+                                        </div>
+                                        <div class="plot-price">
+                                            ₦3.5M
+                                            <small>Full Payment</small>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-center mt-3 mb-0" style="font-size:13px; color:var(--secondary-color);">
+                                        <i class="bi-info-circle me-1"></i> Payment plans available. Contact us for details.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Quick Enquiry Form -->
+                            <div class="enquiry-form-card" id="enquire">
+                                <div class="card-header">
+                                    <h5><i class="bi-envelope-fill me-2"></i> Quick Enquiry</h5>
+                                    <p>Our team will respond within 24 hours.</p>
+
+
+                                </div>
+                                <div class="card-body">
+                                    <form action="#" method="post">
+                                        
+
+                                        <a href="https://wa.me/2348134526271?text=Hello%2C%20I%27m%20interested%20in%20Linco%20Garden%20Estate%20plots."
+                                            class="d-block text-center mt-3" target="_blank"
+                                            style="background:#25d366; color:#fff; padding:13px; border-radius:10px; font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:1px; box-shadow:0 4px 15px rgba(37,211,102,0.35); text-decoration:none;">
+                                            <i class="bi-whatsapp me-2"></i> WhatsApp Us Instead
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Call to Action -->
+                            <div class="highlight-box mt-4">
+                                <i class="bi-telephone-fill" style="font-size:36px; color:var(--primary-color); margin-bottom:15px; display:block;"></i>
+                                <h5 style="color:#fff; margin-bottom:10px;">Speak to an Agent</h5>
+                                <p style="color:rgba(255,255,255,0.65); font-size:15px; margin-bottom:20px;">Our property consultants are available Mon–Sat, 8AM–6PM</p>
+                                <a href="tel:08134526271" class="d-block text-center mb-2"
+                                    style="background:var(--primary-color); color:#fff; padding:13px; border-radius:10px; font-weight:700; font-size:15px; box-shadow:0 4px 15px rgba(204,0,0,0.4); text-decoration:none;">
+                                    <i class="bi-telephone me-2"></i> 08134526271
+                                </a>
+                                <a href="tel:08024728636" class="d-block text-center"
+                                    style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8); padding:13px; border-radius:10px; font-weight:600; font-size:15px; border:1px solid rgba(255,255,255,0.15); text-decoration:none;">
+                                    <i class="bi-telephone me-2"></i> 08024728636
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATED PROPERTIES -->
+        <section class="section-padding" style="background:var(--section-bg-color);">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <small class="section-small-title">More Listings</small>
+                        <span class="section-divider mx-auto"></span>
+                        <h3 class="mt-2">Other <span class="eunix-red">Properties</span> by Eunix</h3>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property2.png" alt="Shortlet Apartments" class="related-prop-img">
+                                <div class="shop-btn-wrap">
+                                    <a href="index.html#section_5" class="shop-btn">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <span class="property-tag">Shortlet</span>
+                                <h4 style="margin-top:10px;">Serviced Apartments</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Port Harcourt</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property4.png" alt="Family Homes" class="related-prop-img">
+                                <div class="shop-btn-wrap">
+                                    <a href="index.html#section_5" class="shop-btn">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <span class="property-tag available">Residential</span>
+                                <h4 style="margin-top:10px;">Family Homes</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Rivers State</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="shop-thumb">
+                            <div class="shop-image-wrap">
+                                <img src="images/properties/property3.png" alt="Commercial Plots" class="related-prop-img">
+                                <div class="shop-btn-wrap">
+                                    <a href="index.html#section_5" class="shop-btn">Enquire</a>
+                                </div>
+                            </div>
+                            <div class="shop-body">
+                                <span class="property-tag">Commercial</span>
+                                <h4 style="margin-top:10px;">Commercial Land</h4>
+                                <p><i class="bi-geo-alt eunix-red me-1"></i> Port Harcourt</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-center mt-4">
+                    <a href="index.html#section_3" class="custom-btn">
+                        <i class="bi-grid me-2"></i> View All Properties
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" style="display:block; background:var(--section-bg-color);">
+            <path fill="#1a1a1a" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,80L0,80Z"></path>
+        </svg>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <a href="index.html" class="d-flex align-items-center mb-3" style="text-decoration:none;">
+                        <img src="images/eunix-logo.png" alt="Eunix Logo" style="width:36px;height:36px;object-fit:contain;margin-right:10px;border-radius:5px;">
+                        <span class="footer-brand">EUNIX <span style="color:var(--primary-color);">PROPERTIES</span></span>
+                    </a>
+                    <p class="mb-3">A fast-growing real estate development and management company delivering quality housing solutions across Nigeria.</p>
+                    <ul class="footer-social-icons">
+                        <li><a href="https://www.instagram.com/eunixproperties?igsh=MTVuN3ZsMjc5MGhhdA==" target="_blank" class="social-icon-link bi-instagram"></a></li>
+                        <li><a href="https://www.facebook.com/share/1731bRYAtq/" target="_blank" class="social-icon-link bi-facebook"></a></li>
+                        <li><a href="https://x.com/eunixproperties?s=21" target="_blank" class="social-icon-link bi-twitter-x"></a></li>
+                        <li><a href="https://wa.me/2348134526271" target="_blank" class="social-icon-link bi-whatsapp"></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#section_2">About Us</a></li>
+                        <li><a href="index.html#section_services">Services</a></li>
+                        <li><a href="index.html#section_3">Properties</a></li>
+                        <li><a href="index.html#section_academy">Academy</a></li>
+                        <li><a href="index.html#section_5">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h3>Pages</h3>
+                    <ul class="footer-links">
+                        <li><a href="linco-garden-details.html">Linco Garden</a></li>
+                        <li><a href="forms.html">Forms</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info-item mb-3">
+                        <i class="bi-geo-alt-fill" style="color:var(--primary-color);font-size:18px;flex-shrink:0;margin-top:2px;"></i>
+                        <span>Omehoma Plaza, No. 2 Celestial Omehia Way, SARS Road, Port Harcourt, Rivers State.</span>
+                    </div>
+                    <div class="contact-info-item mb-2">
+                        <i class="bi-telephone-fill" style="color:var(--primary-color);font-size:16px;flex-shrink:0;"></i>
+                        <div>
+                            <a href="tel:08134526271">08134526271</a><br>
+                            <a href="tel:08024728636">08024728636</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi-whatsapp" style="color:#25d366;font-size:16px;flex-shrink:0;"></i>
+                        <a href="https://wa.me/2348134526271" target="_blank">08134526271 (WhatsApp)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-12">
+                        <p class="copyright-text mb-0">&copy; 2026 Eunix Properties Ltd. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 col-12 text-md-end">
+                        <p class="developer-credit mb-0">
+                            Developed by <a href="https://codelikewyna.com.ng" target="_blank">CodeLikeWyna Tech</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/2348134526271?text=Hello%2C%20I%27m%20interested%20in%20Linco%20Garden%20Estate%20plots." target="_blank" title="Chat on WhatsApp">
+            <i class="bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- JS FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function () {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>
